@@ -1,3 +1,5 @@
+import requests
+
 class Mensagem:
     def __init__(self, user, endereco_arquivo: str = None, transcricao_audio: str = None): 
         self.id_Telegram = user.from_user.id  
@@ -40,7 +42,12 @@ class Mensagem:
         pass
         
     def buscar_llm_configurada(self) -> str | None:
-        return None
+        response = requests.get("http://localhost:8081/configs")
+        obj = response.json()
+        if (obj):
+            return obj.get('llm')
+        else:
+            return None
     
     def salvar_dados_banco_dados(self):
         mensagem = {
