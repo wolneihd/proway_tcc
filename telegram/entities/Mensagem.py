@@ -1,14 +1,14 @@
 class Mensagem:
     def __init__(self, user, endereco_arquivo: str = None, transcricao_audio: str = None): 
-        self.id_Telegram = user.id  
+        self.id_Telegram = user.from_user.id  
         self.nome = user.from_user.first_name  
-        self.sobrenome = user.from_user.last_name if user.last_name else ''  
+        self.sobrenome = user.from_user.last_name if user.from_user.last_name else ''  
         self.tipo_mensagem = None
         self.respondido = False
         self.textoMensagem = None
         self.caminhoArquivo = None
         self.resposta = None
-        self.horario_envio = user.get('date')
+        self.horario_envio = user.date
         self.llm = self.buscar_llm_configurada()
         
         # após análise:
@@ -23,7 +23,7 @@ class Mensagem:
         
     def information_por_tipo_dado(self, data: dict, endereco_arquivo: str = None, transcricao_audio: str = None):
         if (data.content_type) == "text":
-            self.textoMensagem = data.get('text')
+            self.textoMensagem = data.json['text']
             self.tipo_mensagem = "TEXTO"
         elif (data.content_type) == "photo":
             self.caminhoArquivo = endereco_arquivo
