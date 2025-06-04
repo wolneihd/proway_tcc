@@ -1,8 +1,8 @@
 class Mensagem:
     def __init__(self, user, endereco_arquivo: str = None, transcricao_audio: str = None): 
         self.id_Telegram = user.id  
-        self.nome = user.first_name  
-        self.sobrenome = user.last_name if user.last_name else ''  
+        self.nome = user.from_user.first_name  
+        self.sobrenome = user.from_user.last_name if user.last_name else ''  
         self.tipo_mensagem = None
         self.respondido = False
         self.textoMensagem = None
