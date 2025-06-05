@@ -1,5 +1,6 @@
 import requests
 from services.groq_ia import analise_texto_gropIA
+from datetime import datetime, timezone
 
 class Mensagem:
     def __init__(self, user, endereco_arquivo: str = None, transcricao_audio: str = None): 
@@ -11,7 +12,7 @@ class Mensagem:
         self.textoMensagem = None
         self.caminhoArquivo = None
         self.resposta = None
-        self.horario_envio = user.date
+        self.horario_envio = datetime.fromtimestamp(user.date, tz=timezone.utc)
         self.llm = self.buscar_llm_configurada()
         
         # após análise:
@@ -36,12 +37,8 @@ class Mensagem:
             self.caminhoArquivo = endereco_arquivo
             self.tipo_mensagem = "AUDIO"
             self.analise_ia()
-    
-    def converter_timestamp_hora(self):
-        pass            
-        
+           
     def analise_ia(self):
-        # feedback, categoria, resumo
         self.feedback, self.categoria, self.resumo = analise_texto_gropIA(self.textoMensagem)
         
     def buscar_llm_configurada(self) -> str | None:
@@ -75,5 +72,7 @@ class Mensagem:
                 }
             ]
         }
-        print(f"Salvando o objeto: {mensagem}")
+        response = requests.post("http://localhost:8081/", json=mensagem)
+        response.json()
+        print(f"Salvando o objeto: {response}")
     
