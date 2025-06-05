@@ -1,4 +1,5 @@
 import requests
+from services.groq_ia import analise_texto_gropIA
 
 class Mensagem:
     def __init__(self, user, endereco_arquivo: str = None, transcricao_audio: str = None): 
@@ -21,12 +22,12 @@ class Mensagem:
         
         self.buscar_llm_configurada()
         self.information_por_tipo_dado(user, endereco_arquivo, transcricao_audio)
-        self.analise_ia()
         
     def information_por_tipo_dado(self, data: dict, endereco_arquivo: str = None, transcricao_audio: str = None):
         if (data.content_type) == "text":
             self.textoMensagem = data.json['text']
             self.tipo_mensagem = "TEXTO"
+            self.analise_ia()
         elif (data.content_type) == "photo":
             self.caminhoArquivo = endereco_arquivo
             self.tipo_mensagem = "IMAGEM"
@@ -34,12 +35,14 @@ class Mensagem:
             self.textoMensagem = transcricao_audio
             self.caminhoArquivo = endereco_arquivo
             self.tipo_mensagem = "AUDIO"
+            self.analise_ia()
     
     def converter_timestamp_hora(self):
         pass            
         
     def analise_ia(self):
-        pass
+        # feedback, categoria, resumo
+        self.feedback, self.categoria, self.resumo = analise_texto_gropIA(self.textoMensagem)
         
     def buscar_llm_configurada(self) -> str | None:
         response = requests.get("http://localhost:8081/configs")

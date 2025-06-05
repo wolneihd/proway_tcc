@@ -41,6 +41,7 @@ def analise_texto_gropIA(mensagem: str):
         texto = response.choices[0].message.content
         partes = texto.split(';')
         texto_formatado = [parte.replace('"', '').replace('.', '') for parte in partes]
+        # feedback, categoria, resumo
         return texto_formatado[0], texto_formatado[1], texto_formatado[2]
     except:
         print("Erro ao gerar Array e instanciar o objeto.")
