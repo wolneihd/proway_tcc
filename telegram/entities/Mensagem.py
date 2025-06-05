@@ -12,7 +12,7 @@ class Mensagem:
         self.textoMensagem = None
         self.caminhoArquivo = None
         self.resposta = None
-        self.horario_envio = datetime.fromtimestamp(user.date, tz=timezone.utc)
+        self.horario_envio = datetime.fromtimestamp(user.date, tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         self.llm = self.buscar_llm_configurada()
         
         # após análise:
@@ -50,29 +50,31 @@ class Mensagem:
             return None
     
     def salvar_dados_banco_dados(self):
-        mensagem = {
-            "idTelegram": self.id_Telegram,
-            "nome": self.nome,
-            "sobrenome": self.sobrenome,
-            "mensagens": [
-                {
-                    "tipoMensagem": self.tipo_mensagem,
-                    "respondido": self.respondido,
-                    "textoMensagem": self.textoMensagem,
-                    "caminhoArquivo": self.caminhoArquivo,
-                    "resposta": self.resposta,
-                    "instant": self.horario_envio,
-                    "analise": {
-                        "llm": self.llm,
-                        "feedback": self.feedback,
-                        "categoria": self.categoria,
-                        "resumo": self.resumo,
-                        "resposta": self.resposta
+        try:
+            mensagem = {
+                "idTelegram": self.id_Telegram,
+                "nome": self.nome,
+                "sobrenome": self.sobrenome,
+                "mensagens": [
+                    {
+                        "tipoMensagem": self.tipo_mensagem,
+                        "respondido": self.respondido,
+                        "textoMensagem": self.textoMensagem,
+                        "caminhoArquivo": self.caminhoArquivo,
+                        "resposta": self.resposta,
+                        "instant": self.horario_envio,
+                        "analise": {
+                            "llm": self.llm,
+                            "feedback": self.feedback,
+                            "categoria": self.categoria,
+                            "resumo": self.resumo,
+                            "resposta": self.resposta
+                        }
                     }
-                }
-            ]
-        }
-        response = requests.post("http://localhost:8081/", json=mensagem)
-        response.json()
-        print(f"Salvando o objeto: {response}")
+                ]
+            }
+            response = requests.post("http://localhost:8081/", json=mensagem)
+            print(f"Salvando o objeto: {response.json()}")
+        except Exception as e:
+            print(e)
     

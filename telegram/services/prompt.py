@@ -24,7 +24,6 @@ def gerar_prompt(mensagem_usuario: str) -> str:
         resposta01;resposta02;resposta03    
         """
     
-    print(prompt)
     return prompt
 
 if __name__ == "__main__":
