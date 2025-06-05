@@ -1,5 +1,6 @@
 import requests
 from services.groq_ia import analise_texto_gropIA
+from services.gemini import analise_texto_gemini
 from datetime import datetime, timezone
 
 class Mensagem:
@@ -39,7 +40,10 @@ class Mensagem:
             self.analise_ia()
            
     def analise_ia(self):
-        self.feedback, self.categoria, self.resumo = analise_texto_gropIA(self.textoMensagem)
+        if self.llm == "GROQIA":
+            self.feedback, self.categoria, self.resumo = analise_texto_gropIA(self.textoMensagem)
+        elif self.llm == "GEMINI":
+            self.feedback, self.categoria, self.resumo = analise_texto_gemini(self.textoMensagem)
         
     def buscar_llm_configurada(self) -> str | None:
         response = requests.get("http://localhost:8081/configs")
