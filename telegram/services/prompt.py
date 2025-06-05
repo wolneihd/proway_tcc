@@ -1,6 +1,6 @@
 import requests
 
-def gerar_promt(mensagem_usuario: str) -> str:
+def gerar_prompt(mensagem_usuario: str) -> str:
     # buscar categorias:
     response = requests.get("http://localhost:8081/categorias")
     categorias = response.json()
@@ -28,4 +28,4 @@ def gerar_promt(mensagem_usuario: str) -> str:
     return prompt
 
 if __name__ == "__main__":
-    gerar_promt("Achei o atendimento ótimo!")
+    gerar_prompt("Achei o atendimento ótimo!")
