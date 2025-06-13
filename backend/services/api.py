@@ -1,8 +1,8 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-
 import os
 from dotenv import load_dotenv
+from services.buscar_dados import buscar_todas_as_mensagens
 
 # from responder_mensagens import obter_id_telegram
 # from telegram import enviar_mensagem
@@ -17,17 +17,10 @@ def montar_API():
     CORS(app)
 
     # responder mensagem do usuário:
-    @app.route('/telebot/enviar', methods=['POST'])
-    def enviar_resposta():
-        dados = request.get_json()
-
-        # # obter ID Telegram:
-        # id_telegram = obter_id_telegram(dados.get('usuario'))
-
-        # # enviar mensagem ao usuário
-        # enviar_mensagem(id_telegram, dados.get('resposta'))
-
-        # return jsonify({'dados': dados})  
+    @app.route('/mensagens', methods=['GET'])
+    def obter_todas_mensagens():
+        dados = buscar_todas_as_mensagens()
+        return jsonify(dados)  
 
     app.run(port=PORT,host=HOST,debug=False)
 

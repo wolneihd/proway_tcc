@@ -1,4 +1,4 @@
 /.vscode
-/telegram/.env
-/telegram/entities/__pycache__
-/telegram/services/__pycache__
+/backend/.env
+/backend/entities/__pycache__
+/backend/services/__pycache__
