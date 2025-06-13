@@ -201,6 +201,24 @@ class Database:
             print(f"Erro ao buscar todos os usuários: {e}")
             None
         
-        
+    def buscar_todas_ia(self) -> dict:
+        resultados = self.session.query(LLM).all()
+        lista_llms = [ {"id": item.id, "nome": item.nome} for item in resultados ]   
+        return lista_llms
+    
+    def atualizar_llm(self, nova_llm: str) -> bool:
+        try:
+            configs = self.session.query(Configs).first()
+            if configs:
+                configs.llm_selecionada = nova_llm
+                self.session.commit()
+                return True
+            else:
+                print("Nenhuma configuração encontrada.")
+                return False
+        except Exception as e:
+            self.session.rollback()
+            print(f"Erro ao atualizar LLM: {e}")
+            return False
 
 

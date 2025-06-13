@@ -8,18 +8,22 @@
             <div class="box">
                 <label for="">IA</label>
                 <select name="model-ia" id="model-ia">
-                    @for (llm of llms; track $index) {
-                    <option value="{{llm.ia}}">{{llm.ia}}</option>
+                    @for (llm of this.config.llm; track $index) {
+                    <option value="{{llm.nome}}">{{llm.nome}}</option>
                     }
                 </select>
             </div>
             <div class="box">
                 <label for="">Chave API</label>
-                <input type="text" name="chave-api" id="chave-api" disabled placeholder="Ainda não implementado">
+                @for (llm of this.config.llm; track $index) {
+                    @if (llm.ia_selecionada == true) {
+                        <input type="text" name="chave-api" id="chave-api" value="{{llm.api_key}}">                        
+                    }
+                }                
             </div>
             <div class="box">
                 <label for="">Link Power BI</label>
-                <input type="text" name="link-powerbi" id="link-powerbi" disabled placeholder="Ainda não implementado">
+                <input type="text" name="link-powerbi" id="link-powerbi" value="{{this.config.powerBI}}">
             </div>
             <div class="box">
                 <button class="btn btn-dark" (click)="obterDadosInput()">Salvar</button>

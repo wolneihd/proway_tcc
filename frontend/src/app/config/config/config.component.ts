@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NabvarConfigComponent } from '../nabvar-config/nabvar-config.component';
 import { TabelaUsuariosComponent } from "../tabela-usuarios/tabela-usuarios.component";
 import { ApiService } from '../../services/api.service';
-import { LLM } from '../../entidades/LLM';
+import { LLM, Config } from '../../entidades/Config';
 
 @Component({
   selector: 'app-config',
@@ -15,7 +15,7 @@ export class ConfigComponent {
 
   constructor(private api: ApiService) { }
 
-  llms: LLM[] = [];
+  config = {} as Config;
 
   // Variáveis para armazenar os valores dos inputs e do select
   modelIA: string = '';
@@ -25,8 +25,7 @@ export class ConfigComponent {
   ngOnInit() {
     this.api.obterTodosLLMs().subscribe({
       next: res => {
-        this.llms = res;
-        console.log(this.llms);
+        this.config = res;
       },
       error: erro => {
         console.error(erro)
@@ -41,6 +40,10 @@ export class ConfigComponent {
     this.chaveAPI = (document.getElementById('chave-api') as HTMLInputElement).value;
     this.linkPowerBI = (document.getElementById('link-powerbi') as HTMLInputElement).value;
 
+    console.log(this.modelIA)
+    console.log(this.chaveAPI)
+    console.log(this.linkPowerBI)
+
     this.api.salvarInputsConfig(this.modelIA, this.chaveAPI, this.linkPowerBI).subscribe({
       next: (resposta) => {},
       error: erro => {
@@ -49,5 +52,4 @@ export class ConfigComponent {
       }
     })
   }
-
 }
