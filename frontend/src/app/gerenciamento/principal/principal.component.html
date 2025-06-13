@@ -1,0 +1,17 @@
+<div class="barra-nav">
+  <app-navbar></app-navbar>
+</div>
+
+<div class="filtrar-responder">
+  <!-- <p>filtro</p> -->
+  @if (divResponder === true) {
+    <app-responder></app-responder>
+  }
+  @if (divFiltrar === true) {
+   <app-filtrar class="filtrar"></app-filtrar>
+  }
+</div>
+
+<div class="tabela">
+  <app-lista-dados></app-lista-dados>
+</div>

@@ -1,0 +1,20 @@
+<app-nabvar-config></app-nabvar-config>
+
+<div class="box-filtrar">
+  <app-filtrar-totem></app-filtrar-totem>
+</div>
+
+<div class="box-dashboard">
+    <ngx-charts-bar-vertical
+      [results]="dadosTotem"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel">      
+    </ngx-charts-bar-vertical>
+</div>
+
+

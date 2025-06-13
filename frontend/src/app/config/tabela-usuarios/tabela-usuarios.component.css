@@ -1,0 +1,36 @@
+.box-tabela-usuarios {
+    margin: 5%;
+    display: flex;
+}
+
+th,
+td {
+    font-size: 14px;
+    text-align: left;
+    padding: 5px 3px 20px;
+    white-space: nowrap;
+}
+
+th {
+    background-color: #E0E0E0;
+    color: black;
+    padding: 10px;
+    /* Adiciona espaçamento interno */
+}
+
+/* Mantém a tabela ajustável e adiciona espaçamento entre colunas */
+table {
+    width: auto;
+    border-collapse: collapse;
+    /* Mantém a cor do <th> */
+}
+
+td+td,
+th+th {
+    padding-left: 10px;
+    /* Adiciona espaçamento apenas entre as colunas */
+}
+
+.box-add-usuario {
+    margin-left: 5px;
+}

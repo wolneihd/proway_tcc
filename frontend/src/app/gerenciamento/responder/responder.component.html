@@ -1,0 +1,37 @@
+<div class="responder">
+  <div class="box lista-mensagens">
+    <h5>Mensanges Selecionadas para resposta:</h5>
+    <ol>
+      @for (item of this.mensagensSelecionadas; track $index) {
+      @if (item.texto_msg) {
+      <li>{{item.texto_msg}}</li>
+      } @else {
+      <div class="dialog-imagem">
+        <li>Mensagem em forma de imagem:</li>
+        <p class="link-imagem" (click)="abrirDialogImagem(item.nome_arquivo, item.tipo_mensagem, item.texto_msg)"> abrir </p>
+      </div>
+      }
+      }
+    </ol>
+  </div>
+  <div class="box prompt">
+    <h6>Entre com informações adicionais para a IA</h6>
+    <textarea name="complemento" id="complemento" placeholder="Digite aqui seu contexto adicional"
+      [(ngModel)]="promptAdicionalUsuario"></textarea>
+    <div class="box-buttom">
+      <button class="btn btn-light" (click)="fecharResposta()">Cancelar</button>
+      <button class="btn btn-dark" (click)="gerarResposta()">Gerar</button>
+    </div>
+  </div>
+  <div class="box">
+    @if (divResponder === true) {
+    <h6>Editar a mensagem gerada pela IA antes de enviar ao usuário</h6>
+    <textarea name="complemento" id="complemento" placeholder="Digite aqui seu contexto adicional"
+      [(ngModel)]="respostaIA.resposta"></textarea>
+    <div class="box-buttom">
+      <button class="btn btn-light" (click)="fecharResposta()">Cancelar</button>
+      <button class="btn btn-dark" (click)="enviarResposta()">Enviar</button>
+    </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<nav>
+  <div class="box logo-voltar">
+    <h4>eAI?</h4>
+    <button class="btn btn-dark" (click)="filtrarMensagem()">Filtrar</button>
+  </div>
+  <div class="box btn-apps">
+    <a href="#">Power BI</a>
+    <a (click)="abrirDashboardTotem()" class="btn-cursor">Totem</a>
+    <a (click)="abrirDialogContato()" class="btn-cursor">Suporte</a>
+  </div>
+  <div class="box btn-admin">
+    <button class="btn btn-light" (click)="abrirConfigurar()">Configurações</button>
+    <button class="btn btn-dark" (click)="sair()">Sair</button>
+  </div>
+</nav>

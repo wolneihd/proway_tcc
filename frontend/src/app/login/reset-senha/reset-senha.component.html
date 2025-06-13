@@ -1,0 +1,18 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<mat-dialog-content class="mat-typography box-contato">
+
+  <div class="container">
+    <mat-icon class="icone-fechar" [mat-dialog-close]="true">close</mat-icon>
+  </div>
+
+  <h6>Digite seu e-mail para o reenvio de senha</h6>
+
+  <br>
+  <input type="email" class="form-control" id="email-usuario">
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button class="btn btn-light" [mat-dialog-close]="true">Cancelar</button>
+  <button class="btn btn-dark" [mat-dialog-close]="true" (click)="reenviarEmail()">Enviar</button>
+</mat-dialog-actions>

@@ -64,7 +64,13 @@ def handle_photo(message):
     except Exception as e:
         print(e)
         bot.send_message(message.chat.id, "Erro ao processar a imagem. Favor tentar novamente mais tarde.")    
-    
+
+def enviar_mensagem(user_id: int, resposta: str):
+    try:
+        bot.send_message(user_id, resposta)
+        print(f"resposta enviada para o user_id {user_id}: {resposta}")
+    except Exception as e:
+        print(f"Erro ao enviar resposta para o user_id {user_id}: {str(e)}")          
 
 def iniciar_telebot():
     print(">>> Bot Telegram inicializado...")

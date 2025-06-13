@@ -1,0 +1,8 @@
+<mat-dialog-content class="mat-typography box-contato">
+    <h6>Tem certeza em excluir o(a) usuário(a) {{nome}}?</h6>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button class="btn btn-light" [mat-dialog-close]="true">Cancelar</button>
+    <button class="btn btn-danger" [mat-dialog-close]="true" (click)="inativarUsuario()">Excluir</button>
+</mat-dialog-actions>

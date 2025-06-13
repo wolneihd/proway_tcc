@@ -1,0 +1,17 @@
+.barra-nav {
+  border-bottom: 1px solid black;
+}
+
+.filtrar-responder{
+  border-bottom: 1px solid black;
+}
+
+.tabela {
+  display: flex;
+  justify-content: center;
+}
+
+.filtrar {
+  display: flex;
+  justify-content: space-between;
+}

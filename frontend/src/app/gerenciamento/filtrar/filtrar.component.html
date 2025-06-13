@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="box">
+    <label for="texto-busca">Nome do Usuário</label>
+    <input type="text" id="texto-busca" placeholder="Digite o nome">
+  </div>
+  <div class="box">
+
+    <label for="analise_ia">Analise IA</label>
+    <select id="analise_ia" name="analise_ia">
+      <option value="todas">Todas</option>
+      <option value="positivo">Positivo</option>
+      <option value="neutro">Neutro</option>
+      <option value="negativo">Negativo</option>
+    </select>
+
+    <label for="status">Status</label>
+    <select id="status" name="Status">
+      <option value="todas">Todas</option>
+      <option value="em_aberto">Em aberto</option>
+      <option value="respondido">Respondido</option>
+    </select>
+
+    <label for="categoria">Categoria</label>
+    <select id="categoria" name="categoria">
+      <option value="todas">Todas</option>
+      <option value="limpeza">Limpeza</option>
+      <option value="organizacao">Organização</option>
+      <option value="atendimento">Atendimento</option>
+      <option value="pedido">Pedido</option>
+      <option value="outros">Outros</option>
+    </select>
+
+  </div>
+
+  <div class="box">
+    <label for="tipo">Tipo</label>
+    <select id="tipo" name="Tipo">
+      <option value="todas">Todas</option>
+      <option value="text">Texto</option>
+      <option value="voice">Áudio</option>
+      <option value="photo">Imagem</option>
+    </select>
+
+    <label for="ia">LLM utilizada</label>
+    <select id="ia" name="IA">
+      <option value="todas">Todas</option>
+      <option value="groqia">GroqIA</option>
+      <option value="chatgpt">ChatGPT</option>
+      <option value="gemini">Gemini</option>
+      <!-- <option value="">Imagem</option> -->
+    </select>
+  </div>
+
+  <div class="box">
+    <label for="data-de">De</label>
+    <input type="date" id="data-de" name="data">
+
+    <label for="data-ate">Até</label>
+    <input type="date" id="data-ate" name="data">
+  </div>
+
+  <div class="box">
+    <button class="btn btn-light botoes" (click)="fecharResponder()">Cancelar</button>
+    <button class="btn btn-dark botoes" (click)="captarDadosBusca()">Filtrar</button>
+  </div>
+
+</div>

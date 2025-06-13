@@ -1,0 +1,100 @@
+<!-- <div class="responder">
+  <app-responder></app-responder>
+</div> -->
+
+<div class="container">
+  <div class="usuarios">
+    <!-- <p class="head-tabela">Usuários</p> -->
+    <div class="head-tabela-msgs">
+      <p class="head-tabela">Usuários</p>
+      @if (isDadosFiltrados) {
+      <button class="btn btn-dark" (click)="limparFiltros()">Limpar Filtros</button>
+      }
+    </div>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>ID Telegram</th>
+        <th>Mensagens</th>
+        <th>Ação</th>
+      </tr>
+      <tr *ngFor="let usuario of usuarios">
+        <td>{{usuario.id}}</td>
+        <td>{{usuario.nome}}</td>
+        <td>{{usuario.sobrenome}}</td>
+        <td>{{usuario.id_telegram}}</td>
+        <td>{{usuario.mensagens.length}}</td>
+        <td (click)="verMensagens(usuario.mensagens, usuario.id)">
+          <button class="btn btn-light">Abrir</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="mensagens">
+    <div class="head-tabela-msgs">
+      <p class="head-tabela">Mensagens</p>
+      <button class="btn btn-light" (click)="responderMensagem(usuarios)" *ngIf="btnResponder">Responder</button>
+    </div>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>LLM</th>
+        <th>Data</th>
+        <th>Horário</th>
+        <th>Tipo</th>
+        <th>Análise IA</th>
+        <th>Categoria</th>
+        <th>Resumo</th>
+        <th>Status</th>
+        <th>Ação</th>
+        <th>Selecionar</th>
+      </tr>
+      <tr *ngFor="let mensagem of mensagens">
+        <td>{{mensagem.id}}</td>
+
+        @if (mensagem.analise.llm) {
+        <td> {{mensagem.analise.llm}}</td>
+        } @else {
+        <td></td>
+        }
+
+        <td>{{converterTimestampData(mensagem.timestamp)}}</td>
+        <td>{{converterTimestampHora(mensagem.timestamp)}}</td>
+        <td>{{mensagem.tipo_mensagem}}</td>
+        <td>{{mensagem.analise.resumo}}</td>
+        <td>{{mensagem.analise.categoria}}</td>
+        <td>{{mensagem.analise.feedback}}</td>
+
+        @if (mensagem.analise.erro){
+        <td class="bg-danger text-white">
+          <p>Erro IA</p>
+        </td>
+        } @else if (mensagem.analise.resposta) {
+        <td class="text-bg-success p-3">
+          <p>Respondido</p>
+        </td>
+        } @else {
+        <td>
+          <p>Em aberto</p>
+        </td>
+        }
+
+        <td class="td-center-edit">
+          @if (!mensagem.analise.erro) {
+          <button class="btn btn-light"
+            (click)="abrirDialogImagem(mensagem.nome_arquivo, mensagem.tipo_mensagem, mensagem.texto_msg)">Ver
+          </button>
+          } @else {
+          <button class="btn btn-light" (click)="abrirReprocessar()">Reprocessar</button>
+          }
+        </td>
+        <td>
+          <input type="checkbox" (click)="checkSelecionado(mensagem)">
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

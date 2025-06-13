@@ -1,0 +1,21 @@
+@if (tipo == "photo") {
+    <h2 mat-dialog-title>Imagem enviada pelo usuário</h2>
+    <mat-dialog-content class="mat-typography">
+        <!-- <img alt="item" [src]="url_imagem"> -->
+        <img [src]="url_imagem" alt="item" style="max-width: 500px; height: auto;">
+    </mat-dialog-content>
+} 
+@else if (tipo == "text") {
+    <h2 mat-dialog-title>Mensagem de texto enviada pelo usuário</h2>
+    <p>{{texto_msg}}</p>
+}
+@else if (tipo == "voice") {
+    <h2 mat-dialog-title>Mensagem de áudio transcrita enviada pelo usuário</h2>
+    <p>{{texto_msg}}</p>
+}
+
+
+<mat-dialog-actions align="end">
+    <button class="btn btn-light" mat-button mat-dialog-close>Cancelar</button>
+    <button class="btn btn-dark" mat-button [mat-dialog-close]="true" cdkFocusInitial>Fechar</button>
+</mat-dialog-actions>

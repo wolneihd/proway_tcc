@@ -1,0 +1,34 @@
+.responder {
+  display: flex;
+  justify-content: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  background-color: #f2f2f2;
+}
+
+textarea {
+  width: 100%;
+  height: 120px;
+}
+
+.box {
+  margin-right: 15px;
+  width: 30%;
+}
+
+.box-buttom {
+  display: flex;
+  justify-content: right;
+  margin-right: 2%;
+}
+
+.dialog-imagem {
+  display: inline-flex;
+}
+
+.link-imagem {
+  color: #0645AD;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: bold;
+}

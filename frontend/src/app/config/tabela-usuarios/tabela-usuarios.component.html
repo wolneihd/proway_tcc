@@ -1,0 +1,36 @@
+<div class="box-tabela-usuarios">
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Status</th>
+        <th>Ação</th>
+        <th>Excluir</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (usuario of usuarios; track $index) {
+        <tr>
+          <td>{{usuario.nome}}</td>
+          <td>{{usuario.email}}</td>
+          @if (usuario.status == true) {
+            <td>Ativo</td>
+          } @else {
+            <td>Inativo</td>
+          }
+          <td>
+            <button class="btn btn-secondary" (click)="editarUsuario(usuario.nome, usuario.email)">Editar</button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="excluirUsuario(usuario.nome)">Excluir</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <div class="box-add-usuario">
+    <button class="btn btn-dark" (click)="novoUsuario()">Incluir Usuário</button>
+  </div>
+</div>

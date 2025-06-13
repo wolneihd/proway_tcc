@@ -1,0 +1,19 @@
+mat-dialog-content {
+  margin: 20px;
+}
+
+h6 {
+  color: black;
+  font-weight: bold;
+}
+
+button {
+  margin-right: 5px;
+}
+
+.icone-fechar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}

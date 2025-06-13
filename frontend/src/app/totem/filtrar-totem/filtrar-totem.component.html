@@ -1,0 +1,27 @@
+<div class="container">
+
+  <div class="box">
+
+    <label for="analise_ia">Respostas</label>
+    <select id="analise_ia" name="analise_ia">
+      <option value="todas">Todas</option>
+      <option value="positivo">Positivo</option>
+      <option value="neutro">Neutro</option>
+      <option value="negativo">Negativo</option>
+    </select>
+  </div>
+
+  <div class="box">
+    <label for="data-de">De</label>
+    <input type="date" id="data-de" name="data">
+
+    <label for="data-ate">Até</label>
+    <input type="date" id="data-ate" name="data">
+  </div>
+
+  <div class="box box-botoes">
+    <button class="btn btn-light botoes">Cancelar</button>
+    <button class="btn btn-dark botoes" (click)="filtrarTotem()">Filtrar</button>
+  </div>
+
+</div>

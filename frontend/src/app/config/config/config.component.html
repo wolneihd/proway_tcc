@@ -1,0 +1,48 @@
+<div class="navbar-border">
+    <app-nabvar-config></app-nabvar-config>
+</div>
+
+<div class="dividir-tela">
+    <div class="container">
+        <div class="inputs-admin">
+            <div class="box">
+                <label for="">IA</label>
+                <select name="model-ia" id="model-ia">
+                    @for (llm of llms; track $index) {
+                    <option value="{{llm.ia}}">{{llm.ia}}</option>
+                    }
+                </select>
+            </div>
+            <div class="box">
+                <label for="">Chave API</label>
+                <input type="text" name="chave-api" id="chave-api" disabled placeholder="Ainda não implementado">
+            </div>
+            <div class="box">
+                <label for="">Link Power BI</label>
+                <input type="text" name="link-powerbi" id="link-powerbi" disabled placeholder="Ainda não implementado">
+            </div>
+            <div class="box">
+                <button class="btn btn-dark" (click)="obterDadosInput()">Salvar</button>
+            </div>
+        </div>
+        <div>
+            <app-tabela-usuarios></app-tabela-usuarios>
+        </div>
+    </div>
+    <div class="container">
+        <h4>Prompt utilizado pela IA:</h4>
+        <textarea name="" id="" cols="100" rows="20" disabled>
+        - você deve analisar a mensagem enviada abaixo.
+        - serão 03 respostas que devem ser separadas por ; entre elas para podemos depois podermos tabular os dados.
+        - pergunta 01: foi um feedback - positivo, negativo, neutro ou inconclusivel?
+        - pergunta 02: categorizar (somente uma opção válida): limpeza, organização, atendimento, outro.
+        - pergunta 03: resumir em até no máximo 50 caracteres (considerando pontuações e espaços vazios). 
+
+        Feedback do usuário: {mensagem}. 
+
+        O retorno do assistente deve ser apenas: 
+
+        resposta01;resposta02;resposta03
+        </textarea>
+    </div>
+</div>

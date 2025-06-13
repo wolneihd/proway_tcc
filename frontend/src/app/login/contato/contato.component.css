@@ -1,0 +1,19 @@
+* {
+  color: black;
+}
+
+p {
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.btn-cor {
+  color: white;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}

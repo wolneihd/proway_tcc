@@ -1,0 +1,48 @@
+.grafico {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.coluna {
+    width: 80px;
+    margin: 0 20px;
+    text-align: center;
+}
+
+.barra {
+    display: block;
+    width: 100%;
+    background-color: #4CAF50;
+    margin-bottom: 5px;
+}
+
+.coluna1 .barra {
+    height: 150px;
+    background-color: #FF5733;
+    /* Cor da Coluna 1 */
+}
+
+.coluna2 .barra {
+    height: 190px;
+    background-color: #33FF57;
+    /* Cor da Coluna 2 */
+}
+
+.coluna3 .barra {
+    height: 100px;
+    background-color: #3357FF;
+    /* Cor da Coluna 3 */
+}
+
+.label {
+    margin-top: 10px;
+}
+
+.box-filtrar {
+    border-bottom: 1px solid black;
+}
+
+.box-dashboard {
+    margin: 5%;
+}
